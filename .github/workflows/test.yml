@@ -15,6 +15,7 @@ jobs:
       matrix:
         php-version: ["8.0", "8.1"]
         os: [ubuntu-latest, macos-latest, windows-latest]
+        script: ["copy", "rename"]
 
     steps:
       - name: Checkout
@@ -26,8 +27,5 @@ jobs:
           coverage: none
           php-version: ${{ matrix.php-version }}
 
-      - name: Test copy
-        run: php copy.php
-
-      - name: Test rename
-        run:  php rename.php
+      - name: Test script
+        run: php ${{ matrix.script }}.php
